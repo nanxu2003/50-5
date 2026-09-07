@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ereta Holdings Limited | 用心守護 您的健康</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0b3d3a',      // 深青綠
+                            primary: '#0f766e',    // 醫療青
+                            teal: '#14b8a6',
+                            accent: '#2dd4bf',
+                            mint: '#ccfbf1',
+                            light: '#f0fdfa'       // 薄荷白
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans SC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(15, 118, 110, 0.1);
+            box-shadow: 0 4px 20px rgba(15, 118, 110, 0.08);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(11, 61, 58, 0.75), rgba(11, 61, 58, 0.55)), url('https://picsum.photos/id/405/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(15, 118, 110, 0.2);
+        }
+
+        .doctor-card img { transition: transform 0.6s ease; }
+        .doctor-card:hover img { transform: scale(1.05); }
+
+        .wave-divider {
+            background: linear-gradient(to right, transparent, #99f6e4, transparent);
+            height: 2px;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-700 antialiased overflow-x-hidden">
+
+    <!-- 頂部公告 -->
+    <div class="bg-brand-dark text-teal-200 text-xs py-2 px-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <span><i class="fas fa-heartbeat mr-2"></i>秋季流感疫苗現已接受預約，65 歲以上長者更可享政府資助。</span>
+            <span class="hidden md:block">24 小時查詢熱線：81247066</span>
+        </div>
+    </div>
+
+    <!-- 導航 -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5 top-8">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-gradient-to-br from-brand-primary to-brand-teal rounded-lg flex items-center justify-center text-white text-xl shadow-lg">
+                    <i class="fas fa-staff-snake"></i>
+                </div>
+                <div class="text-brand-dark">
+                    <h1 class="font-bold text-lg leading-tight">Ereta Holdings</h1>
+                    <p class="text-[10px] tracking-[0.3em] text-brand-primary uppercase">Medical Centre</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex space-x-8 text-brand-dark text-sm font-medium">
+                <a href="#home" class="hover:text-brand-primary transition">首頁</a>
+                <a href="#about" class="hover:text-brand-primary transition">關於我們</a>
+                <a href="#services" class="hover:text-brand-primary transition">醫療服務</a>
+                <a href="#doctors" class="hover:text-brand-primary transition">醫生團隊</a>
+                <a href="#process" class="hover:text-brand-primary transition">診症流程</a>
+                <a href="#contact" class="hover:text-brand-primary transition">聯絡我們</a>
+            </div>
+
+            <a href="#contact" class="hidden md:inline-block px-6 py-2.5 bg-brand-primary text-white font-bold rounded-full hover:bg-brand-dark transition duration-300 text-sm shadow-lg shadow-teal-500/30">
+                網上預約
+            </a>
+
+            <button class="md:hidden text-brand-dark text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header id="home" class="hero-bg h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center text-white mt-16">
+            <span class="inline-block py-1 px-4 border border-teal-300/60 rounded-full text-teal-200 text-sm mb-6 tracking-[0.3em] reveal">CARING FOR LIFE · SINCE 2003</span>
+            <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight reveal" style="transition-delay: 100ms;">
+                以仁心守護生命，<br><span class="text-teal-300">以科技精準醫療。</span>
+            </h2>
+            <p class="text-lg md:text-xl text-gray-100 mb-10 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">
+                Ereta Holdings Limited 集合逾 30 位專科醫生，配備先進醫療儀器，為香港市民提供以人為本的綜合醫療服務。
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center reveal" style="transition-delay: 300ms;">
+                <a href="#services" class="px-8 py-4 bg-brand-teal text-white font-bold rounded-lg hover:bg-brand-primary transition shadow-lg shadow-teal-500/40">
+                    了解醫療服務 <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#contact" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg font-bold hover:bg-white/20 transition">
+                    立即預約診症
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- 數據統計 -->
+    <section class="py-10 bg-white relative -mt-10 z-20 shadow-xl rounded-t-3xl mx-4 md:mx-10">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
+            <div class="reveal">
+                <div class="text-4xl font-bold text-brand-dark mb-2 counter" data-target="22">0</div>
+                <div class="text-gray-500 text-sm">年專業醫療經驗</div>
+            </div>
+            <div class="reveal" style="transition-delay: 100ms;">
+                <div class="text-4xl font-bold text-brand-primary mb-2 counter" data-target="150000">0</div>
+                <div class="text-gray-500 text-sm">累計診症人次 (+)</div>
+            </div>
+            <div class="reveal" style="transition-delay: 200ms;">
+                <div class="text-4xl font-bold text-brand-dark mb-2 counter" data-target="30">0</div>
+                <div class="text-gray-500 text-sm">位專科醫生</div>
+            </div>
+            <div class="reveal" style="transition-delay: 300ms;">
+                <div class="text-4xl font-bold text-brand-primary mb-2 counter" data-target="98">0</div>
+                <div class="text-gray-500 text-sm">患者滿意度 (%)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我們 -->
+    <section id="about" class="py-20 bg-brand-light">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative reveal">
+                    <img src="https://picsum.photos/id/412/800/600" alt="醫療中心" class="rounded-2xl shadow-2xl z-10 relative">
+                    <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-brand-teal/15 rounded-full z-0 blur-3xl"></div>
+                    <div class="absolute -top-10 -left-10 w-48 h-48 bg-brand-mint/60 rounded-full z-0 blur-3xl"></div>
+                    <div class="absolute bottom-6 left-6 bg-brand-dark text-white px-6 py-4 rounded-xl shadow-xl">
+                        <p class="text-2xl font-bold text-teal-300">ISO 9001</p>
+                        <p class="text-xs text-gray-300">國際品質管理認證</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal">
+                    <h3 class="text-brand-primary font-bold tracking-[0.3em] uppercase mb-3">關於Ereta Holdings Limited</h3>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-6 leading-snug">以人為本，<br>讓醫療更有溫度</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Ereta Holdings Limited，總部位於香港，是一間獲政府認可的綜合醫療中心，提供普通科、專科、健康檢查及中醫等一站式醫療服務。
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        我們深信優質醫療源於聆聽。每位患者均由專屬護士跟進，診症時間保證不少於 15 分鐘，以充分了解您的健康狀況與需要。
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-brand-primary mr-3"></i> 專科轉介及跨科會診服務</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-brand-primary mr-3"></i> 先進影像及化驗設備</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-brand-primary mr-3"></i> 電子病歷系統，資料加密保存</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 醫療服務 -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-primary font-bold tracking-[0.3em]">OUR SERVICES</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4">全面醫療服務</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">由預防、診斷到治療復康，全方位守護您的健康。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-teal-100 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-user-doctor"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">普通科門診</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        感冒發燒、慢性病跟進、小兒科等常見病症，無需轉介即可預約，即日診症。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">預約診症 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-teal-100 transition-all duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">專科診治</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        心臟科、腸胃肝臟科、骨科、婦產科、皮膚科等逾 12 個專科，主診醫生具備豐富臨床經驗。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-teal-100 transition-all duration-300 reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-file-waveform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">身體健康檢查</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        設有基本、進階及企業體檢計劃，涵蓋心臟、癌症指標及影像檢查，即日取報告。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">查看計劃 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-teal-100 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">疫苗接種</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        流感、HPV、甲乙型肝炎及肺炎鏈球菌疫苗齊備，設有冷鏈儲存系統確保疫苗效能。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">預約接種 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-teal-100 transition-all duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">中醫診療</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        註冊中醫師主理針灸、推拿及內科調理，中西合璧為您提供更全面的治療方案。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-dark rounded-2xl transition-all duration-300 reveal text-white" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-teal-400/20 text-teal-300 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-house-medical"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">上門醫療服務</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed mb-4">
+                        為行動不便的長者及長期病患者提供醫生上門診症、抽血及傷口護理服務。
+                    </p>
+                    <a href="#contact" class="text-teal-300 text-sm font-semibold hover:underline">預約上門 &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 醫生團隊 -->
+    <section id="doctors" class="py-20 bg-brand-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-primary font-bold tracking-[0.3em]">OUR DOCTORS</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4">專業醫生團隊</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">每一位醫生，皆以醫者父母心服務社區。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="doctor-card card-hover bg-white rounded-2xl overflow-hidden shadow-md border border-teal-100 reveal">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://picsum.photos/id/177/600/400" alt="醫生" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-lg font-bold text-brand-dark">陳志明 醫生</h3>
+                        <p class="text-brand-primary text-sm mb-3">香港大學內外全科醫學士 · 心臟科專科</p>
+                        <p class="text-gray-500 text-xs">30 年臨床經驗，專注心臟衰竭及冠心病的介入治療。</p>
+                    </div>
+                </div>
+
+                <div class="doctor-card card-hover bg-white rounded-2xl overflow-hidden shadow-md border border-teal-100 reveal" style="transition-delay: 100ms;">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://picsum.photos/id/143/600/400" alt="醫生" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-lg font-bold text-brand-dark">李慧敏 醫生</h3>
+                        <p class="text-brand-primary text-sm mb-3">香港中文大學醫學博士 · 婦產科專科</p>
+                        <p class="text-gray-500 text-xs">產前產後護理權威，每年接生逾 200 名嬰兒。</p>
+                    </div>
+                </div>
+
+                <div class="doctor-card card-hover bg-white rounded-2xl overflow-hidden shadow-md border border-teal-100 reveal" style="transition-delay: 200ms;">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://picsum.photos/id/64/600/400" alt="醫生" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-lg font-bold text-brand-dark">黃國豪 醫生</h3>
+                        <p class="text-brand-primary text-sm mb-3">英國皇家醫學院院士 · 腸胃肝臟科</p>
+                        <p class="text-gray-500 text-xs">專責內視鏡檢查及腸胃腫瘤早期診斷與治療。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 保險合作 -->
+    <section class="py-14 bg-brand-dark">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-teal-200 text-sm mb-3">接受各大醫療保險</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-80">
+                <i class="fab fa-cc-visa text-4xl hover:text-white transition"></i>
+                <i class="fas fa-shield-halved text-4xl hover:text-white transition"></i>
+                <i class="fas fa-umbrella text-4xl hover:text-white transition"></i>
+                <i class="fas fa-heart text-4xl hover:text-white transition"></i>
+                <i class="fas fa-plus text-4xl hover:text-white transition"></i>
+            </div>
+            <p class="text-gray-300 text-xs mt-4">AXA、友邦、保誠、宏利等保險公司直接結算服務</p>
+        </div>
+    </section>
+
+    <!-- 診症流程 -->
+    <section id="process" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold text-brand-dark">簡易診症流程</h2>
+                <p class="text-gray-500 mt-2">從預約到復診，每一步都輕鬆安心</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-teal-200"></div>
+
+                <div class="text-center reveal">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-teal shadow-lg mb-6">
+                        <i class="fas fa-calendar-check text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">1. 網上預約</h4>
+                    <p class="text-gray-500 text-sm px-4">24 小時網上預約系統，最快可即日見醫生。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-teal shadow-lg mb-6">
+                        <i class="fas fa-clipboard-user text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">2. 登記分流</h4>
+                    <p class="text-gray-500 text-sm px-4">專人登記，量度體溫血壓，安排合適診室。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-teal shadow-lg mb-6">
+                        <i class="fas fa-stethoscope text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">3. 醫生診症</h4>
+                    <p class="text-gray-500 text-sm px-4">詳細問診檢查，如需要即場安排化驗影像。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-24 h-24 bg-brand-dark mx-auto rounded-full flex items-center justify-center border-4 border-brand-teal shadow-lg mb-6">
+                        <i class="fas fa-phone-volume text-3xl text-teal-300"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">4. 報告跟進</h4>
+                    <p class="text-gray-500 text-sm px-4">報告電話解說，專人提醒覆診時間及用藥。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 患者心聲 -->
+    <section class="py-20 bg-brand-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-primary font-bold tracking-[0.3em]">TESTIMONIALS</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4">患者心聲</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">每一聲感謝，都是我們最大的動力。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-8 reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-brand-primary to-brand-teal flex items-center justify-center text-white font-bold text-xl mr-4">張</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">張婆婆</h4>
+                            <p class="text-sm text-gray-500">長期病患者 · 上門醫療服務使用者</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">「醫生定期上門幫我檢查和抽血，不用再辛苦家人推輪椅去診所，服務非常貼心，醫護人員都好有耐心。」</p>
+                    <div class="flex text-teal-400 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 reveal" style="transition-delay: 100ms;">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-brand-primary to-brand-teal flex items-center justify-center text-white font-bold text-xl mr-4">陳</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">陳小姐</h4>
+                            <p class="text-sm text-gray-500">上班族 · 身體健康檢查客戶</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">「體檢流程安排得非常順暢，即日就出報告，醫生親自電話講解每個指標，還提醒我要注意的飲食習慣，很專業。」</p>
+                    <div class="flex text-teal-400 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 reveal" style="transition-delay: 200ms;">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-brand-primary to-brand-teal flex items-center justify-center text-white font-bold text-xl mr-4">李</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">李先生</h4>
+                            <p class="text-sm text-gray-500">新手爸爸 · 疫苗接種客戶</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">「帶BB來打疫苗，護士姐姐非常溫柔，流程好快唔使排長龍，診所環境乾淨舒適，以後都會選擇這裡。」</p>
+                    <div class="flex text-teal-400 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 貼心醫療服務 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-primary font-bold tracking-[0.3em]">CARE SERVICES</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4">貼心醫療服務</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">以患者為中心，照顧您就醫的每個環節。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-brand-light rounded-2xl border border-teal-100 p-6 text-center reveal">
+                    <div class="w-12 h-12 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-xl mx-auto mb-4"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h4 class="font-bold text-gray-800 mb-2">保險索償代辦</h4>
+                    <p class="text-gray-500 text-sm">專人協助整理索償文件，與保險公司直接對接。</p>
+                </div>
+                <div class="bg-brand-light rounded-2xl border border-teal-100 p-6 text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-xl mx-auto mb-4"><i class="fas fa-pills"></i></div>
+                    <h4 class="font-bold text-gray-800 mb-2">藥物配送</h4>
+                    <p class="text-gray-500 text-sm">藥物快遞到家，慢性病患者毋須親身取藥。</p>
+                </div>
+                <div class="bg-brand-light rounded-2xl border border-teal-100 p-6 text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-xl mx-auto mb-4"><i class="fas fa-video"></i></div>
+                    <h4 class="font-bold text-gray-800 mb-2">視像診症</h4>
+                    <p class="text-gray-500 text-sm">遙距視像問診及電子藥方，覆診更方便。</p>
+                </div>
+                <div class="bg-brand-light rounded-2xl border border-teal-100 p-6 text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-xl mx-auto mb-4"><i class="fas fa-chalkboard-user"></i></div>
+                    <h4 class="font-bold text-gray-800 mb-2">健康講座</h4>
+                    <p class="text-gray-500 text-sm">定期社區健康講座，傳遞預防醫學知識。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-brand-light">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center text-brand-dark mb-12 reveal">常見問題</h2>
+
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-lg shadow-sm reveal">
+                    <h4 class="font-bold text-lg mb-2 text-gray-800"><i class="far fa-question-circle text-brand-primary mr-2"></i> 診症收費如何計算？</h4>
+                    <p class="text-gray-600">普通科門診收費為港幣 300 元起（已包三日基本藥物）；專科診症收費港幣 700 元起，視乎檢查項目。網站首頁可查閱完整收費表。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm reveal">
+                    <h4 class="font-bold text-lg mb-2 text-gray-800"><i class="far fa-question-circle text-brand-primary mr-2"></i> 如何查詢化驗報告？</h4>
+                    <p class="text-gray-600">一般化驗報告於 3 至 5 個工作天內完成，可透過 eretaholdings.com 客戶專區下載，或由護士電話解說報告結果。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm reveal">
+                    <h4 class="font-bold text-lg mb-2 text-gray-800"><i class="far fa-question-circle text-brand-primary mr-2"></i> 是否接受保險公司直接結算？</h4>
+                    <p class="text-gray-600">接受。我們與 AXA、友邦、保誠、宏利等主要保險公司合作，投保人可享免找數服務，只需出示保單資料即可。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-teal/20 to-transparent"></div>
+        <div class="container mx-auto px-6 text-center relative z-10 text-white">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">健康，是送給家人最好的禮物</h2>
+            <p class="text-xl text-teal-100 mb-10">立即預約Ereta Holdings Limited健康檢查，及早發現、及早治療。</p>
+            <a href="#contact" class="inline-block px-10 py-4 bg-brand-teal text-white font-bold rounded-full shadow-xl hover:bg-brand-primary transform hover:scale-105 transition duration-300">
+                立即預約
+            </a>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer id="contact" class="bg-brand-dark text-gray-200 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <h3 class="text-white text-2xl font-bold mb-6">Ereta Holdings Limited</h3>
+                    <p class="mb-6 text-sm leading-relaxed">
+                        以仁心與專業守護社區健康，Ereta Holdings Limited 期望成為香港家庭最信賴的醫療夥伴。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-teal hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-teal hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-teal hover:text-white transition"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">快速連結</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="hover:text-teal-300 transition">首頁</a></li>
+                        <li><a href="#about" class="hover:text-teal-300 transition">關於我們</a></li>
+                        <li><a href="#services" class="hover:text-teal-300 transition">醫療服務</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition">健康資訊</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition">加入我們</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">診所資訊</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-teal-300"></i>
+                            <span>19/F BEVERLY HSE 93-107 LOCKHART RD</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-teal-300"></i>
+                            <a href="mailto:contact@eretaholdings.com" class="hover:text-white transition">contact@eretaholdings.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-teal-300"></i>
+                            <a href="tel:81247066" class="hover:text-white transition text-lg font-bold">81247066</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-teal-300"></i>
+                            <span>星期一至六：09:00 – 21:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">網上預約</h4>
+                    <form onsubmit="event.preventDefault(); alert('感謝您的預約，我們會盡快確認時間！');" class="space-y-3">
+                        <input type="text" placeholder="您的稱呼" class="w-full bg-white/10 border border-white/10 rounded py-3 px-4 text-white focus:ring-2 focus:ring-brand-teal outline-none text-sm">
+                        <input type="text" placeholder="聯絡電話" class="w-full bg-white/10 border border-white/10 rounded py-3 px-4 text-white focus:ring-2 focus:ring-brand-teal outline-none text-sm">
+                        <select class="w-full bg-white/10 border border-white/10 rounded py-3 px-4 text-gray-300 focus:ring-2 focus:ring-brand-teal outline-none text-sm">
+                            <option>選擇服務</option>
+                            <option>普通科門診</option>
+                            <option>專科診治</option>
+                            <option>健康檢查</option>
+                            <option>疫苗接種</option>
+                        </select>
+                        <button type="submit" class="w-full bg-brand-teal text-white font-bold py-3 rounded hover:bg-brand-primary transition">提交預約</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p>&copy; 2026 Ereta Holdings Limited 版權所有</p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="hover:text-teal-300">私隱政策</a>
+                    <a href="#" class="hover:text-teal-300">收費表</a>
+                    <a href="#" class="hover:text-teal-300">病人權益</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#home" id="backToTop" class="fixed bottom-8 right-8 bg-brand-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform translate-y-20 transition-all duration-300 z-40 hover:bg-brand-dark">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'py-2');
+                navbar.classList.remove('py-5');
+                backToTop.classList.remove('translate-y-20');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-2');
+                navbar.classList.add('py-5');
+                backToTop.classList.add('translate-y-20');
+            }
+        });
+
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.querySelector('.counter') && !entry.target.dataset.counted) {
+                        startCounters(entry.target);
+                        entry.target.dataset.counted = true;
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function startCounters(section) {
+            const counters = section.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        document.querySelector('.fa-bars')?.parentElement?.addEventListener('click', () => {
+            alert('移動端菜單點擊 (此處可擴展側邊欄邏輯)');
+        });
+    </script>
+</body>
+</html>
